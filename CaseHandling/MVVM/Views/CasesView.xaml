@@ -70,7 +70,7 @@
                 <StackPanel Grid.Row="0" >
 
                     <TextBlock Text="Comment for this Case :" Margin="0 150 0 0"/>
-                    <TextBox Text="{Binding SelectedCase.CommentForCase}"  Padding="3" Margin="0 0 0 10"  Height="60" TextWrapping="Wrap" />
+                    <TextBox Text="{Binding Comment}"  Padding="3" Margin="0 0 0 10"  Height="60" TextWrapping="Wrap" />
 
                     <!--<TextBlock Text="Status" />
                     <TextBox Text="{Binding SelectedCase.Status}"  Padding="3" Margin="0 0 0 0" />-->

@@ -22,9 +22,9 @@ namespace CaseHandling.MVVM.Models.Entities
         public int CaseId { get; set; }
         public CaseEntity Case { get; set; } = null!;
 
-        [Required]
-        public int TechnicianId { get; set; }
-        public TechnicianEntity Technician { get; set; } = null!;
+        //[Required]
+        //public int TechnicianId { get; set; }
+        //public TechnicianEntity Technician { get; set; } = null!;
 
     }
 }

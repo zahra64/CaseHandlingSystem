@@ -48,14 +48,9 @@ namespace CaseHandling.MVVM.ViewModels
         [RelayCommand]
         public async Task CreateNewCommentAsync()
         {
-            var commentt = new Case
-            {
-                CommentForCase = Comment,
-                CreatedCommentDate = DateTime.Now,
+          
 
-            };
-
-            await CaseService.SaveCommentAsync(commentt);
+            await CaseService.SaveCommentAsync(Comment, SelectedCase);
 
             ClearForm();
 
