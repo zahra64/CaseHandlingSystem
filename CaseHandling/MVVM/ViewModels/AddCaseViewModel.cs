@@ -35,6 +35,9 @@ namespace CaseHandling.MVVM.ViewModels
         [ObservableProperty]
         private string status = string.Empty;
 
+        //[ObservableProperty]
+        //public DateTime createdOnDate;
+
 
         [RelayCommand]
         public async Task CreateNewCaseAsync()
@@ -42,7 +45,7 @@ namespace CaseHandling.MVVM.ViewModels
             var casee = new Case
             {
                 Description = Description,
-                //CreatedOnDate = DateTime.Now,
+                CreatedOnDate = DateTime.Now,
                 Status = "Ej Påbörjad",
                 //Status= Status,
                 CustomerFirstName = FirstName,
@@ -51,7 +54,7 @@ namespace CaseHandling.MVVM.ViewModels
                 CustomerPhone= Phone,
             };
 
-            await CaseService.SaveAsync(casee);
+            await CaseService.SaveCaseAsync(casee);
 
             ClearForm();
         }

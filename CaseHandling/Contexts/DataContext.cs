@@ -10,7 +10,7 @@ namespace CaseHandling.Contexts
 {
     internal class DataContext : DbContext
     {
-        private readonly string _connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Zahra\source\repos\Database\CaseHandlingSystem\CaseHandling\Contexts\database_local.mdf;Integrated Security=True;Connect Timeout=30";
+        private readonly string _connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Zahra\source\repos\Database\CaseHandlingSystem\CaseHandling\Contexts\sql_localdb.mdf;Integrated Security=True;Connect Timeout=30";
         #region constructor
 
         public DataContext()

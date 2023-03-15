@@ -61,6 +61,27 @@
             </StackPanel>
 
 
+            <Grid Grid.Column="1" Margin="25" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0" >
+
+                    <TextBlock Text="Comment for this Case :" Margin="0 150 0 0"/>
+                    <TextBox Text="{Binding SelectedCase.CommentForCase}"  Padding="3" Margin="0 0 0 10"  Height="60" TextWrapping="Wrap" />
+
+                    <!--<TextBlock Text="Status" />
+                    <TextBox Text="{Binding SelectedCase.Status}"  Padding="3" Margin="0 0 0 0" />-->
+
+
+                </StackPanel>
+
+                <Button Command="{Binding CreateNewCommentCommand}" Grid.Row="1" VerticalAlignment="Bottom" Content="Update" Padding="5" />
+                
+
+            </Grid>
 
         </Grid>
     </Grid>

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CaseHandling.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230313000640_InitDatabase")]
-    partial class InitDatabase
+    [Migration("20230314203606_Initmydatabase")]
+    partial class Initmydatabase
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -69,7 +69,7 @@ namespace CaseHandling.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("CreatedOnDate")
+                    b.Property<DateTime>("CreatedCommentDate")
                         .HasColumnType("datetime");
 
                     b.Property<int>("TechnicianId")

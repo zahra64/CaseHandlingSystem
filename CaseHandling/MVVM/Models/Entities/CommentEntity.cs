@@ -15,7 +15,7 @@ namespace CaseHandling.MVVM.Models.Entities
         public string Comment { get; set; } = null!;
 
         [Column(TypeName = "datetime")]
-        public DateTime CreatedOnDate { get; set; }
+        public DateTime CreatedCommentDate { get; set; } = DateTime.Now;
 
 
         [Required]

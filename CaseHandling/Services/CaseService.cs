@@ -16,7 +16,7 @@ namespace CaseHandling.Services
     {
         private static DataContext _context = new DataContext();
 
-        public static async Task SaveAsync(Case casee)
+        public static async Task SaveCaseAsync(Case casee)
         {
             var _caseEntity = new CaseEntity
             {
@@ -61,5 +61,76 @@ namespace CaseHandling.Services
 
             return _cases;
         }
+
+
+        public static async Task SaveCommentAsync(Case comment)
+        {
+            var _commentEntity = new CommentEntity
+            {
+                Id = comment.Id,
+                Comment = comment.CommentForCase,
+
+            };
+
+           var _caseEntity = await _context.Cases.FirstOrDefaultAsync(x => x.Description == comment.Description && x.Status == comment.Status && x.CreatedOnDate == comment.CreatedOnDate);
+            //var _caseEntity = _context.Cases;
+            var _technicianEntity = _context.Employees;
+            //if (_caseEntity != null && _technicianEntity != null)
+                //if (_caseEntity != null || _technician != null)
+                if (_caseEntity != null)
+            {
+                _commentEntity.CaseId = _caseEntity.Id;
+               // _commentEntity.TechnicianId = _technicianEntity.Id;
+            }
+
+            //else
+            //    _commentEntity.Case = new CaseEntity
+            //    {
+            //        Description = comment.Description,
+            //        Status = comment.Status,
+            //        CreatedOnDate = comment.CreatedOnDate,
+            //    };
+
+            _context.Add(_commentEntity);
+            await _context.SaveChangesAsync();
+        }
+
+
+
+
+
+
+
+        //public static async Task SaveCommentAsync(MVVM.Models.Comment comment)
+        //{
+        //    var _commentEntity = new CommentEntity
+        //    {
+        //        Comment = comment.CommentForCase,
+
+        //    };
+
+        //    var _caseEntity = await _context.Cases.FirstOrDefaultAsync(x => x.Description == comment.Description && x.Status == comment.Status && x.CreatedOnDate == comment.CreatedOnDate);
+        //    //var _caseEntity = _context.Cases;
+        //    var _technician = _context.Employees;
+
+        //    if (_caseEntity != null && _technician != null)
+        //    {
+        //        _commentEntity.CaseId = _commentEntity.Id;
+        //        _commentEntity.TechnicianId = _commentEntity.Id;
+        //    }
+
+
+
+        //    //else
+        //    //    _commentEntity.Case = new CaseEntity
+        //    //    {
+        //    //        Description = comment.Description,
+        //    //        Status = comment.Status,
+        //    //        CreatedOnDate = comment.CreatedOnDate,
+        //    //    };
+
+        //    _context.Add(_commentEntity);
+        //    await _context.SaveChangesAsync();
+        //}
     }
 }

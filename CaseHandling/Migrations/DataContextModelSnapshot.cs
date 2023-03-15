@@ -66,7 +66,7 @@ namespace CaseHandling.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("CreatedOnDate")
+                    b.Property<DateTime>("CreatedCommentDate")
                         .HasColumnType("datetime");
 
                     b.Property<int>("TechnicianId")

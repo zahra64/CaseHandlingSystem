@@ -18,5 +18,9 @@ namespace CaseHandling.MVVM.Models
         public DateTime CreatedOnDate { get; set; } = DateTime.Now;
         public string Status { get; set; }
 
+        public string CommentForCase { get; set; } = null!;
+        public DateTime CreatedCommentDate { get; set; } = DateTime.Now;
+
+        // public string CommentSatus { get; set; } = null!;
     }
 }
