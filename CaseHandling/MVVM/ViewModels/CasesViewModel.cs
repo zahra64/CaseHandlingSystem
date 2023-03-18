@@ -48,8 +48,7 @@ namespace CaseHandling.MVVM.ViewModels
         [RelayCommand]
         public async Task CreateNewCommentAsync()
         {
-          
-
+         
             await CaseService.SaveCommentAsync(Comment, SelectedCase);
 
             ClearForm();
@@ -67,24 +66,7 @@ namespace CaseHandling.MVVM.ViewModels
 
     }
 }
-//public async Task CreateNewCaseAsync()
-//{
-//    var casee = new Case
-//    {
-//        Description = Description,
-//        //CreatedOnDate = DateTime.Now,
-//        Status = "Ej Påbörjad",
-//        //Status= Status,
-//        CustomerFirstName = FirstName,
-//        CustomerLastName = LastName,
-//        CustomerEmail = Email,
-//        CustomerPhone = Phone,
-//    };
 
-//    await CaseService.SaveCaseAsync(casee);
-
-//    ClearForm();
-//}
 
 
 
