@@ -9,9 +9,9 @@ namespace CaseHandling.MVVM.Models.Entities
 {
     internal class TechnicianEntity
     {
-        [Key]
-        public int Id { get; set; }
+        //[Key]
+        //public int Id { get; set; }
 
-        public ICollection<CommentEntity> Comments = new HashSet<CommentEntity>();
+        //public ICollection<CommentEntity> Comments = new HashSet<CommentEntity>();
     }
 }

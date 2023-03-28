@@ -63,31 +63,30 @@ namespace CaseHandling.Services
         }
 
 
+
+
         public static async Task SaveCommentAsync(string comment, Case SelectedCase)
         {
             var _commentEntity = new CommentEntity
             {
                 CaseId = SelectedCase.Id,
                 Comment = comment,
-
             };
-
-           var _caseEntity = await _context.Cases.FirstOrDefaultAsync(x => x.Description == SelectedCase.Description && x.Status == SelectedCase.Status && x.CreatedOnDate == SelectedCase.CreatedOnDate);
-        
-            var _technicianEntity = _context.Employees;
-            
-                if (_caseEntity != null)
-            {
-                _commentEntity.CaseId = _caseEntity.Id;
-             
-            }
-
 
             _context.Add(_commentEntity);
             await _context.SaveChangesAsync();
         }
 
 
+        public static async Task ChangeStatusAsync(Case SelectedCase)
+        {
+            var _caseEntity = await _context.Cases.FirstOrDefaultAsync(x => x.Id == SelectedCase.Id);
+
+            _caseEntity!.Status = SelectedCase.Status;
+            _context.Update(_caseEntity);
+
+            await _context.SaveChangesAsync();
+        }
 
 
     }

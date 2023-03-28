@@ -28,6 +28,15 @@ namespace CaseHandling.MVVM.ViewModels
         [ObservableProperty]
         private Case selectedCase = null!;
 
+
+        [ObservableProperty]
+        private string status;
+
+        [ObservableProperty]
+        private string selectedStatus = "ny status:";
+
+
+
         public CasesViewModel()
         {
             ListAllCasesAsync().ConfigureAwait(false);
@@ -48,7 +57,8 @@ namespace CaseHandling.MVVM.ViewModels
         [RelayCommand]
         public async Task CreateNewCommentAsync()
         {
-         
+
+
             await CaseService.SaveCommentAsync(Comment, SelectedCase);
 
             ClearForm();
@@ -61,6 +71,32 @@ namespace CaseHandling.MVVM.ViewModels
 
         }
 
+
+        ///////////////////////////////////////////
+
+
+
+        [RelayCommand]
+        public async Task ChangeStatusAsync()
+        {
+
+            if (SelectedStatus == "NotStarted")
+                SelectedCase.Status = CaseStatus.NotStarted;
+            else if (SelectedStatus == "InProgress")
+                SelectedCase.Status = CaseStatus.InProgress;
+            else if (SelectedStatus == "Completed")
+                SelectedCase.Status = CaseStatus.Completed;
+
+
+            if (SelectedStatus != "NotStarted")
+            {
+                await CaseService.ChangeStatusAsync(selectedCase);
+
+                Status = SelectedStatus;
+            }
+            else
+                SelectedStatus = "NotStarted";
+        }
 
 
 

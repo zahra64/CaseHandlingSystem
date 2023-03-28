@@ -11,15 +11,15 @@ namespace CaseHandling.MVVM.Models.Entities
     internal class CaseEntity
     {
         [Key]
-        public int Id { get; set; } 
+        public int Id { get; set; }
         public string Description { get; set; } = null!;
 
         [Column(TypeName = "datetime")]
         public DateTime CreatedOnDate { get; set; } = DateTime.Now;
 
-       
-        [Column(TypeName = "nvarchar(20)")]
-        public string Status { get; set; }
+        [EnumDataType(typeof(CaseStatus))]
+        [Column(TypeName = "nvarchar(30)")]
+        public CaseStatus Status { get; set; } = CaseStatus.NotStarted;
 
         [Required]
         public int CustomerId { get; set; }
@@ -29,5 +29,12 @@ namespace CaseHandling.MVVM.Models.Entities
         public ICollection<CommentEntity> Comments = new HashSet<CommentEntity>();
 
     }
-    
+
+}
+
+public enum CaseStatus
+{
+    NotStarted,
+    InProgress,
+    Completed
 }

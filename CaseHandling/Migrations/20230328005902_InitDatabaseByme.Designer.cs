@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CaseHandling.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230314203606_Initmydatabase")]
-    partial class Initmydatabase
+    [Migration("20230328005902_InitDatabaseByme")]
+    partial class InitDatabaseByme
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -45,7 +45,7 @@ namespace CaseHandling.Migrations
 
                     b.Property<string>("Status")
                         .IsRequired()
-                        .HasColumnType("nvarchar(20)");
+                        .HasColumnType("nvarchar(30)");
 
                     b.HasKey("Id");
 
@@ -72,14 +72,9 @@ namespace CaseHandling.Migrations
                     b.Property<DateTime>("CreatedCommentDate")
                         .HasColumnType("datetime");
 
-                    b.Property<int>("TechnicianId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("CaseId");
-
-                    b.HasIndex("TechnicianId");
 
                     b.ToTable("Comments");
                 });
@@ -119,19 +114,6 @@ namespace CaseHandling.Migrations
                     b.ToTable("Customers");
                 });
 
-            modelBuilder.Entity("CaseHandling.MVVM.Models.Entities.TechnicianEntity", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Employees");
-                });
-
             modelBuilder.Entity("CaseHandling.MVVM.Models.Entities.CaseEntity", b =>
                 {
                     b.HasOne("CaseHandling.MVVM.Models.Entities.CustomerEntity", "Customer")
@@ -151,15 +133,7 @@ namespace CaseHandling.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("CaseHandling.MVVM.Models.Entities.TechnicianEntity", "Technician")
-                        .WithMany()
-                        .HasForeignKey("TechnicianId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Case");
-
-                    b.Navigation("Technician");
                 });
 #pragma warning restore 612, 618
         }

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace CaseHandling.Migrations
 {
     /// <inheritdoc />
-    public partial class Initmydatabase : Migration
+    public partial class InitDatabaseByme : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -28,18 +28,6 @@ namespace CaseHandling.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Employees",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1")
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Employees", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Cases",
                 columns: table => new
                 {
@@ -47,7 +35,7 @@ namespace CaseHandling.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CreatedOnDate = table.Column<DateTime>(type: "datetime", nullable: false),
-                    Status = table.Column<string>(type: "nvarchar(20)", nullable: false),
+                    Status = table.Column<string>(type: "nvarchar(30)", nullable: false),
                     CustomerId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -69,8 +57,7 @@ namespace CaseHandling.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Comment = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CreatedCommentDate = table.Column<DateTime>(type: "datetime", nullable: false),
-                    CaseId = table.Column<int>(type: "int", nullable: false),
-                    TechnicianId = table.Column<int>(type: "int", nullable: false)
+                    CaseId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -79,12 +66,6 @@ namespace CaseHandling.Migrations
                         name: "FK_Comments_Cases_CaseId",
                         column: x => x.CaseId,
                         principalTable: "Cases",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Comments_Employees_TechnicianId",
-                        column: x => x.TechnicianId,
-                        principalTable: "Employees",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -98,11 +79,6 @@ namespace CaseHandling.Migrations
                 name: "IX_Comments_CaseId",
                 table: "Comments",
                 column: "CaseId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Comments_TechnicianId",
-                table: "Comments",
-                column: "TechnicianId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Customers_Email",
@@ -119,9 +95,6 @@ namespace CaseHandling.Migrations
 
             migrationBuilder.DropTable(
                 name: "Cases");
-
-            migrationBuilder.DropTable(
-                name: "Employees");
 
             migrationBuilder.DropTable(
                 name: "Customers");

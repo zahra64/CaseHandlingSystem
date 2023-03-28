@@ -32,8 +32,8 @@ namespace CaseHandling.MVVM.ViewModels
         [ObservableProperty]
         private string description = string.Empty;
 
-        [ObservableProperty]
-        private string status = string.Empty;
+        //[ObservableProperty]
+        //private string status = string.Empty;
 
         //[ObservableProperty]
         //public DateTime createdOnDate;
@@ -46,12 +46,11 @@ namespace CaseHandling.MVVM.ViewModels
             {
                 Description = Description,
                 CreatedOnDate = DateTime.Now,
-                Status = "Ej Påbörjad",
                 //Status= Status,
                 CustomerFirstName = FirstName,
                 CustomerLastName = LastName,
                 CustomerEmail = Email,
-                CustomerPhone= Phone,
+                CustomerPhone = Phone,
             };
 
             await CaseService.SaveCaseAsync(casee);
@@ -71,6 +70,6 @@ namespace CaseHandling.MVVM.ViewModels
 
 
 
-    
+
     }
 }

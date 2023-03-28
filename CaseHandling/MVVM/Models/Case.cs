@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static CaseHandling.MVVM.Models.Entities.CaseEntity;
 
 namespace CaseHandling.MVVM.Models
 {
@@ -16,11 +18,9 @@ namespace CaseHandling.MVVM.Models
         public string CustomerPhone { get; set; } = null!;
         public string Description { get; set; } = null!;
         public DateTime CreatedOnDate { get; set; } = DateTime.Now;
-        public string Status { get; set; }
-
-        public string CommentForCase { get; set; } = null!;
+        public CaseStatus Status { get; set; } = CaseStatus.NotStarted;
+        public string Comment { get; set; } = null!;
         public DateTime CreatedCommentDate { get; set; } = DateTime.Now;
 
-        // public string CommentSatus { get; set; } = null!;
     }
 }
